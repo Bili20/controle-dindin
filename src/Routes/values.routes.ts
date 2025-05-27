@@ -1,9 +1,9 @@
 import express from "express";
-import { CreateValueController } from "../controllers/create_value.controller";
+import { CreateValueController } from "../controllers/values/create_value.controller";
 import { CreateValuesService } from "../services/values/create_value.service";
 import { ValuesRepository } from "../repository/values/values_repository";
 import { FindValuesService } from "../services/values/find_values.service";
-import { FindValuesController } from "../controllers/find_values.controller";
+import { FindValuesController } from "../controllers/values/find_values.controller";
 
 const valuesRoutes = express.Router();
 const valueRepository = new ValuesRepository();

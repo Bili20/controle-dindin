@@ -1,5 +1,5 @@
-import { createValueDto } from "../models/dtos/create_values.dto";
-import { CreateValuesService } from "../services/values/create_value.service";
+import { createValueDto } from "../../models/dtos/values/create_values.dto";
+import { CreateValuesService } from "../../services/values/create_value.service";
 import { Request, Response } from "express";
 export class CreateValueController {
   constructor(private readonly createValueService: CreateValuesService) {}

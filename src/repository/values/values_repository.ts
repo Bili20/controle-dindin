@@ -4,7 +4,9 @@ import { IValues } from "../../models/values";
 
 export class ValuesRepository implements IValuesRepository {
   async create(values: IValues): Promise<IValues> {
-    const [value] = await knexInstance("values").insert(values).returning("*");
+    const [value] = await knexInstance<IValues>("values")
+      .insert(values)
+      .returning("*");
 
     return value;
   }
@@ -18,7 +20,8 @@ export class ValuesRepository implements IValuesRepository {
       .select("*")
       .where("user_id", user_id)
       .andWhereRaw("EXTRACT(MONTH FROM created_at) = ?", [month])
-      .andWhereRaw("EXTRACT(YEAR FROM created_at) = ?", [year]);
+      .andWhereRaw("EXTRACT(YEAR FROM created_at) = ?", [year])
+      .orderBy("values.id", "desc");
 
     return values;
   }

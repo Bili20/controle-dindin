@@ -1,4 +1,4 @@
-import { createValueDto } from "../../models/dtos/create_values.dto";
+import { createValueDto } from "../../models/dtos/values/create_values.dto";
 import { IValuesRepository } from "../../models/interfaces/values_repository.interface";
 import { IValues } from "../../models/values";
 

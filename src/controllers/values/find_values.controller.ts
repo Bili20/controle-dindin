@@ -1,6 +1,6 @@
 import { plainToInstance } from "class-transformer";
-import { FindValuesDto } from "../models/dtos/find_values.dto";
-import { FindValuesService } from "../services/values/find_values.service";
+import { FindValuesDto } from "../../models/dtos/values/find_values.dto";
+import { FindValuesService } from "../../services/values/find_values.service";
 import { Request, Response } from "express";
 export class FindValuesController {
   constructor(private readonly findValuesService: FindValuesService) {}

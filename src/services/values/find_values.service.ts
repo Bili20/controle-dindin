@@ -1,4 +1,4 @@
-import { FindValuesDto } from "../../models/dtos/find_values.dto";
+import { FindValuesDto } from "../../models/dtos/values/find_values.dto";
 import { IValuesRepository } from "../../models/interfaces/values_repository.interface";
 
 export class FindValuesService {
