@@ -7,5 +7,7 @@ export interface IObjectiveMonthRepository {
     year: number,
     objective_id: number,
     user_id: number
-  ): Promise<IObjectiveMonth>;
+  ): Promise<IObjectiveMonth[]>;
+  findOne(id: number): Promise<IObjectiveMonth>;
+  updateValue(value: number, id: number): Promise<void>;
 }

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CreateObjectiveDto } from "../../models/dtos/objective/create_objective.dto";
-import { CreateObjectiveService } from "../../services/objective/createObjective.service";
+import { CreateObjectiveService } from "../../services/objective/create_objective.service";
 export class CreateObjectiveController {
   constructor(
     private readonly createObjectiveService: CreateObjectiveService
@@ -12,6 +12,7 @@ export class CreateObjectiveController {
       await this.createObjectiveService.execute(body);
       res.status(201).json();
     } catch (e: any) {
+      console.error(e.message);
       res.status(400).json({ message: e.message });
     }
   }

@@ -4,11 +4,6 @@ export class CreateObjectiveMonthDto {
   @IsNumber()
   @IsPositive()
   @IsNotEmpty()
-  total_value_month: number;
-
-  @IsNumber()
-  @IsPositive()
-  @IsNotEmpty()
   savings_value: number;
 
   @IsNumber()

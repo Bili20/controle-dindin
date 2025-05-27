@@ -10,7 +10,6 @@ export class CreateObjectiveMonthService {
   async execute(param: CreateObjectiveMonthDto) {
     const dataObjectiveMonth = {
       savings_value: param.savings_value,
-      total_value_month: param.total_value_month,
       user_id: param.user_id,
       objective_id: param.objective_id,
       created_at: new Date(),

@@ -1,13 +1,15 @@
 import { Type } from "class-transformer";
-import { IsNumber } from "class-validator";
+import { IsNumber, IsOptional } from "class-validator";
 
 export class FindValuesDto {
   @Type(() => Number)
   @IsNumber()
+  @IsOptional()
   month: number;
 
   @Type(() => Number)
   @IsNumber()
+  @IsOptional()
   year: number;
 
   @Type(() => Number)

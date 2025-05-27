@@ -16,13 +16,20 @@ export class ValuesRepository implements IValuesRepository {
     year: number,
     user_id: number
   ): Promise<IValues[]> {
-    const values = await knexInstance("values")
+    let query = knexInstance<IValues>("values")
       .select("*")
-      .where("user_id", user_id)
-      .andWhereRaw("EXTRACT(MONTH FROM created_at) = ?", [month])
-      .andWhereRaw("EXTRACT(YEAR FROM created_at) = ?", [year])
+      .innerJoin(
+        "objective_month",
+        "objective_month.id",
+        "values.objective_month_id"
+      )
+      .where("values.user_id", user_id)
       .orderBy("values.id", "desc");
+    if (month && year) {
+      query.andWhereRaw("EXTRACT(MONTH FROM values.created_at) = ?", [month]);
+      query.andWhereRaw("EXTRACT(YEAR FROM values.created_at) = ?", [year]);
+    }
 
-    return values;
+    return await query;
   }
 }

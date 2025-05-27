@@ -14,8 +14,8 @@ export class ObjectiveRepository implements IObjectiveRepository {
   }
 
   async find(user_id: number): Promise<IObjective[]> {
-    // Implementation for finding objectives by user_id
-    // This should return a list of objectives associated with the user_id
-    return [];
+    return await knexInstance("objective")
+      .select("*")
+      .where("user_id", user_id);
   }
 }
