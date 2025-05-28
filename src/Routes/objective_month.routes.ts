@@ -1,5 +1,5 @@
 import express from "express";
-import { CreateObjectiveMonthController } from "../controllers/objective_month/objective_month.controller";
+import { CreateObjectiveMonthController } from "../controllers/objective_month/create_objective_month.controller";
 import { validationMiddleware } from "../middleware/validation.middleware";
 import { CreateObjectiveMonthDto } from "../models/dtos/objective_month/create_objective_month.dto";
 import { ObjectiveMonthRepository } from "../repository/objective_month/objective_month_repository";

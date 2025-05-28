@@ -13,9 +13,32 @@ export class ObjectiveRepository implements IObjectiveRepository {
     });
   }
 
-  async find(user_id: number): Promise<IObjective[]> {
-    return await knexInstance("objective")
+  async find(
+    user_id: number,
+    month: number,
+    year: number,
+    by_end_date?: boolean
+  ): Promise<IObjective[]> {
+    let fieldDate = { final_date: "final_date", create_at: "create_at" };
+    const query = knexInstance("objective")
       .select("*")
       .where("user_id", user_id);
+
+    if (month && year) {
+      query.andWhereRaw(
+        `EXTRACT(MONTH FROM ${
+          by_end_date ? fieldDate.final_date : fieldDate.create_at
+        }) = ?`,
+        [month]
+      );
+      query.andWhereRaw(
+        `EXTRACT(YEAR FROM ${
+          by_end_date ? fieldDate.final_date : fieldDate.create_at
+        }) = ?`,
+        [year]
+      );
+    }
+
+    return await query;
   }
 }

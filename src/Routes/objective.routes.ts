@@ -26,8 +26,8 @@ objectiveroutes.post(
 );
 
 objectiveroutes.get(
-  "/objective/user/:user_id",
-  validationMiddleware(FindObjectiveDto, "params"),
+  "/objective/user",
+  validationMiddleware(FindObjectiveDto, "query"),
   (req, res) => {
     findObjectiveController.find(req, res);
   }
